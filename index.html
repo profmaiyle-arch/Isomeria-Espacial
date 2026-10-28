@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isomeria Espacial | Estereoisomeria Aprofundada</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                            950: '#2e1065',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navegação -->
+    <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-brand-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-brand-600 rounded-lg text-white shadow-lg shadow-brand-500/30">
+                        <i data-lucide="atom" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-white">Química<span class="text-brand-400">Espacial</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-4 text-sm font-medium">
+                    <a href="#inicio" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Início</a>
+                    <a href="#conceitos" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Conceitos</a>
+                    <a href="#elementos" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Elementos</a>
+                    <a href="#tipos" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Tipos</a>
+                    <a href="#exemplos" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Aplicações</a>
+                    <a href="#quiz" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Quiz</a>
+                    <a href="#conclusao" class="px-3 py-2 rounded-md hover:bg-brand-900/40 hover:text-brand-300 transition">Conclusão</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 text-slate-300 hover:text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-brand-800 px-4 pt-2 pb-4 space-y-1">
+            <a href="#inicio" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Início</a>
+            <a href="#conceitos" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Conceitos</a>
+            <a href="#elementos" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Elementos</a>
+            <a href="#tipos" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Tipos</a>
+            <a href="#exemplos" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Aplicações</a>
+            <a href="#quiz" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Quiz</a>
+            <a href="#conclusao" class="block px-3 py-2 rounded-md hover:bg-brand-900 text-slate-200">Conclusão</a>
+        </div>
+    </nav>
+
+    <!-- INÍCIO / HERO SECTION -->
+    <header id="inicio" class="relative overflow-hidden bg-grid-pattern pt-16 pb-24 border-b border-brand-900/30">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-950/50 via-slate-950 to-slate-950 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-900/60 border border-brand-500/30 text-brand-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 shadow-sm">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-brand-400"></i>
+                    Química Orgânica Avançada
+                </span>
+                
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                    Desvendando a <br><span class="gradient-text">Isomeria Espacial</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto font-light">
+                    Explore a tridimensionalidade das moléculas orgânicas. Descubra como arranjos espaciais distintos de átomos idênticos alteram radicalmente propriedades físicas, reações químicas e atividades biológicas.
+                </p>
+
+                <!-- Bloco dos Integrantes no Início -->
+                <div class="bg-slate-900/90 border border-brand-700/50 rounded-2xl p-6 shadow-xl backdrop-blur-md max-w-3xl mx-auto mt-8">
+                    <div class="flex items-center justify-center gap-2 text-brand-300 font-semibold mb-3">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                        <span class="uppercase tracking-wider text-xs">Integrantes do Projeto</span>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-slate-200 text-sm font-medium">
+                        <span class="px-3 py-1.5 rounded-lg bg-brand-950 border border-brand-800/80 shadow-sm">Luís Otávio Silva dos Santos</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-brand-950 border border-brand-800/80 shadow-sm">Daniel Gandini</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-brand-950 border border-brand-800/80 shadow-sm">João Pedro</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-brand-950 border border-brand-800/80 shadow-sm">Luísa Hypólito</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-brand-950 border border-brand-800/80 shadow-sm">Beatriz Dionízio</span>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                    <a href="#conceitos" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold transition shadow-lg shadow-brand-600/30">
+                        Iniciar Estudo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#quiz" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-300 border border-brand-700/50 font-semibold transition">
+                        Ir para o Quiz (10 Qs) <i data-lucide="help-circle" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONCEITOS FUNDAMENTAIS -->
+    <section id="conceitos" class="py-20 border-b border-brand-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-brand-400 font-semibold text-sm uppercase tracking-wider">
+                        <i data-lucide="book-open" class="w-4 h-4"></i> Fundamentação Teórica
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight">O que é Isomeria Espacial ou Estereoisomeria?</h2>
+                    
+                    <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+                        A <strong class="text-brand-300">Isomeria Espacial</strong> (ou Estereoisomeria) ocorre quando dois ou mais compostos possuem a <strong class="text-white">mesma fórmula molecular</strong> e a <strong class="text-white">mesma conectividade atômica</strong> (mesma fórmula estrutural plana), porém diferem inteiramente na orientação tridimensional dos seus átomos no espaço.
+                    </p>
+                    
+                    <p class="text-slate-300 leading-relaxed text-base">
+                        Diferente da isomeria plana (onde a sequência de ligações muda), nos estereoisômeros as ligações químicas entre os átomos são rigorosamente idênticas. A distinção existe apenas devido à forma como os grupos funcionais se posicionam no espaço euclidiano tridimensional.
+                    </p>
+
+                    <div class="p-4 rounded-xl bg-brand-950/60 border-l-4 border-brand-500 text-slate-300 text-sm space-y-2">
+                        <p class="font-semibold text-brand-200">Importância da Visão Tridimensional:</p>
+                        <p>A simples mudança na orientação de uma única ligação pode transformar um medicamento seguro em um composto inerte ou altamente tóxico, demonstrando que a forma geométrica da molécula é tão crucial quanto sua composição química.</p>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 flex flex-col items-center">
+                    <div class="w-full bg-slate-900 border border-brand-800/60 rounded-2xl p-4 shadow-xl text-center space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-2 px-2">
+                            <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">Figura 1: Projeção Tridimensional</span>
+                            <i data-lucide="image" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                        <img src="projeção.jpg" alt="">
+                        <p class="text-xs text-slate-400 italic text-left px-2">
+                            <strong>Diagrama da Notação Wedge-Dash:</strong> Demonstração dos traços contínuos (no plano), cunha maciça (projetado para fora) e traços pontilhados (projetado para trás).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ELEMENTOS E NOTAÇÕES -->
+    <section id="elementos" class="py-20 bg-slate-900/40 border-b border-brand-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-400 font-semibold text-sm uppercase tracking-wider">Mecanismos & Notações</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Elementos da Isomeria Espacial</h2>
+                <p class="text-slate-400 mt-4">Para compreender e representar graficamente a tridimensionalidade molecular, a química utiliza notações estruturais e critérios específicos.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-900 border border-brand-800/40 rounded-2xl p-6 hover:border-brand-500/50 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-900/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="rotate-3d" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Restrição de Rotação</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        A presença de ligações duplas ($\pi$) impede a livre rotação dos átomos de carbono em torno do seu eixo. Em estruturas cíclicas, a própria geometria do anel trava os átomos, gerando arranjos rígidos e fixos.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-900 border border-brand-800/40 rounded-2xl p-6 hover:border-brand-500/50 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-900/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="fingerprint" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Carbono Quiral ($\text{C}^*$)</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Também conhecido como centro assimétrico. É um átomo de carbono com hibridização $\text{sp}^3$ ligado a quatro ligantes inteiramente distintos entre si ($R_1 \neq R_2 \neq R_3 \neq R_4$).
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-900 border border-brand-800/40 rounded-2xl p-6 hover:border-brand-500/50 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-900/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Planos de Simetria</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Superfícies imaginárias que dividem a molécula em duas metades perfeitamente equivalentes. Moléculas que possuem plano de simetria interno são aquirais e inativas opticamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPOS DE ISOMERIA ESPACIAL -->
+    <section id="tipos" class="py-20 border-b border-brand-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+            
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="text-brand-400 font-semibold text-sm uppercase tracking-wider">Classificação Principal</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Tipos de Isomeria Espacial</h2>
+                <p class="text-slate-400 mt-4">A isomeria espacial divide-se essencialmente em duas grandes categorias: Geométrica e Óptica.</p>
+            </div>
+
+            <!-- TIPO 1: ISOMERIA GEOMÉTRICA -->
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-900/50 text-brand-300 text-xs font-semibold uppercase">
+                        1. Isomeria Geométrica (Cis-Trans / E-Z)
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Geometria e Rigidez Estrutural</h3>
+                    
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                        Ocorre quando a rotação em torno da ligação carbono-carbono é impedida (em alcenos ou compostos cíclicos) e cada carbono da dupla/anel possui dois ligantes diferentes entre si.
+                    </p>
+
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white">Isômero Cis:</strong> Os ligantes iguais ou de maior prioridade encontram-se do mesmo lado do plano de corte. Apresenta maior momento dipolar e maior ponto de ebullição.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white">Isômero Trans:</strong> Os ligantes iguais ou prioritários posicionam-se em lados opostos do plano. Possui maior simetria, polaridade nula/baixa e maior ponto de fusão.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white">Sistema E-Z:</strong> Utilizado quando os 4 ligantes da dupla são inteiramente distintos (regra de prioridade de Cahn-Ingold-Prelog pelo número atômico $Z$).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-slate-900 border border-brand-800/60 rounded-2xl p-4 shadow-xl text-center space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-2 px-2">
+                            <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">Figura 2: Isomeria Geométrica</span>
+                            <i data-lucide="image" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                        <img src="visualizaçao.jpg" alt="">
+                        <p class="text-xs text-slate-400 italic text-left px-2">
+                            <strong>Plano de Corte e Dipolo Polares:</strong> Comparação detalhada entre cis-2-buteno (polar, maior ponto de ebulição) e trans-2-buteno (apolar, simétrico).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-brand-900/40">
+
+            <!-- TIPO 2: ISOMERIA ÓPTICA -->
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 order-2 lg:order-1">
+                    <div class="bg-slate-900 border border-brand-800/60 rounded-2xl p-4 shadow-xl text-center space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-2 px-2">
+                            <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">Figura 3: Enantiômeros & Atividade Óptica</span>
+                            <i data-lucide="image" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                       <img src="representaçao.jpg" alt="">
+                        <p class="text-xs text-slate-400 italic text-left px-2">
+                            <strong>Imagem Especular e Polarimetria:</strong> Estruturas não superponíveis operando o desvio da luz polarizada para a direita (dextrógiro) e esquerda (levógiro).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-6 order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-900/50 text-brand-300 text-xs font-semibold uppercase">
+                        2. Isomeria Óptica
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Quiralidade e Luz Polarizada</h3>
+                    
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                        A isomeria óptica surge em moléculas assimétricas (quirais) que possuem a capacidade física de girar o plano de vibração de um feixe de luz polarizada.
+                    </p>
+
+                    <div class="space-y-4 text-sm text-slate-300">
+                        <div class="p-3 rounded-lg bg-slate-900 border border-brand-900">
+                            <strong class="text-brand-300 block mb-1">Enantiômeros:</strong>
+                            Isômeros ópticos que são imagens especulares não superponíveis um do outro. Um desvia a luz para a direita (<strong class="text-white">Dextrógiro, +</strong>) e o outro desvia exatamente com o mesmo ângulo para a esquerda (<strong class="text-white">Levógiro, -</strong>).
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-900 border border-brand-900">
+                            <strong class="text-brand-300 block mb-1">Mistura Racêmica:</strong>
+                            Mistura equimolar (50% dextrógiro + 50% levógiro). Devido à compensação externa dos desvios angulares, a mistura racêmica é totalmente <strong class="text-white">opticamente inativa</strong>.
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-900 border border-brand-900">
+                            <strong class="text-brand-300 block mb-1">Diastereoisômeros:</strong>
+                            Estereoisômeros ópticos que não são imagens especulares entre si (ocorrem em moléculas com 2 ou mais carbonos quirais).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXEMPLOS E APLICAÇÕES PRÁTICAS -->
+    <section id="exemplos" class="py-20 bg-slate-900/40 border-b border-brand-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="text-brand-400 font-semibold text-sm uppercase tracking-wider">Aplicações Reais</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Impacto na Biologia e Farmacologia</h2>
+                <p class="text-slate-400 mt-4">Como a estereoisomeria determina o comportamento dos fármacos e o funcionamento dos organismos vivos.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <h3 class="text-2xl font-bold text-white">O Modelo Chave-Fechadura Molecular</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Os receptores biológicos no corpo humano (proteínas e enzimas) são estruturas tridimensionais estritamente quirais. Por essa razão, apenas um dos enantiômeros se encaixa com precisão no sítio ativo para desencadear a resposta fisiológica desejada.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-900 border border-brand-800/40">
+                            <span class="text-xs text-brand-400 font-bold uppercase">Caso Talidomida</span>
+                            <h4 class="text-base font-semibold text-white mt-1">S-Talidomida vs R-Talidomida</h4>
+                            <p class="text-xs text-slate-400 mt-2">
+                                Enquanto o enantiômero R possui efeito sedativo e previne enjoos, o enantiômero S possui ação teratogênica grave.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900 border border-brand-800/40">
+                            <span class="text-xs text-brand-400 font-bold uppercase">Caso Limoneno</span>
+                            <h4 class="text-base font-semibold text-white mt-1">D-Limoneno vs L-Limoneno</h4>
+                            <p class="text-xs text-slate-400 mt-2">
+                                O D-limoneno tem aroma característico de laranja, enquanto seu enantiômero L-limoneno tem aroma de limão/pinho.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-slate-900 border border-brand-800/60 rounded-2xl p-4 shadow-xl text-center space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-2 px-2">
+                            <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">Figura 4: Encaixe Enzimático</span>
+                            <i data-lucide="image" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                        <img src="repsentação 2.jpg" alt="">
+                        <p class="text-xs text-slate-400 italic text-left px-2">
+                            <strong>Mecanismo de Reconhecimento Biológico:</strong> Apenas o Enantiômero A alinha seus 3 sítios ativos corretamente. O Enantiômero B falha no encaixe tridimensional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ INTERATIVO (10 PERGUNTAS) -->
+    <section id="quiz" class="py-20 border-b border-brand-900/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-400 font-semibold text-sm uppercase tracking-wider">Avaliação de Conhecimento</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Quiz Interativo de Isomeria Espacial</h2>
+                <p class="text-slate-400 mt-2">Responda às 10 questões abaixo para testar o seu aprendizado teórico e prático.</p>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="bg-slate-900 border border-brand-800/80 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                <div id="quiz-intro" class="text-center space-y-6">
+                    <div class="w-16 h-16 bg-brand-900/80 rounded-full flex items-center justify-center mx-auto text-brand-400 border border-brand-500/40">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Pronto para começar?</h3>
+                    <p class="text-slate-300 text-sm max-w-lg mx-auto">
+                        O teste contém 10 perguntas de escolha múltipla abrangendo conceitos de quiralidade, cis-trans, polarimetria, enantiômeros e aplicações.
+                    </p>
+                    <button onclick="startQuiz()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition shadow-lg shadow-brand-600/30">
+                        Iniciar Quiz Agora
+                    </button>
+                </div>
+
+                <!-- Painel da Questão -->
+                <div id="quiz-game" class="hidden space-y-6">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                        <span id="question-number" class="text-xs font-bold text-brand-400 uppercase tracking-wider">Questão 1 de 10</span>
+                        <span id="quiz-score" class="text-xs font-semibold text-slate-400">Pontuação: 0</span>
+                    </div>
+
+                    <h3 id="question-text" class="text-lg sm:text-xl font-bold text-white leading-snug">
+                        Texto da pergunta aqui...
+                    </h3>
+
+                    <div id="options-container" class="space-y-3">
+                        <!-- Opções injetadas via JS -->
+                    </div>
+
+                    <div id="explanation-box" class="hidden p-4 rounded-xl bg-slate-950 border border-brand-800 text-sm text-slate-300">
+                        <!-- Explicação injetada via JS -->
+                    </div>
+
+                    <div class="flex justify-end pt-4">
+                        <button id="next-btn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition">
+                            Próxima Questão
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Painel de Resultados -->
+                <div id="quiz-result" class="hidden text-center space-y-6 py-6">
+                    <div class="w-20 h-20 bg-brand-900/80 rounded-full flex items-center justify-center mx-auto text-brand-300 border border-brand-500/40">
+                        <i data-lucide="check-circle" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Quiz Concluído!</h3>
+                    <p id="result-text" class="text-slate-300 text-lg">Você acertou X de 10 perguntas.</p>
+                    <p id="result-feedback" class="text-sm text-brand-400 font-medium"></p>
+                    <button onclick="resetQuiz()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition">
+                        Refazer Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section id="conclusao" class="py-20 bg-slate-900/30 border-b border-brand-900/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span class="text-brand-400 font-semibold text-sm uppercase tracking-wider">Considerações Finais</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">Conclusão do Estudo</h2>
+            <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+                A <strong class="text-brand-300">Isomeria Espacial</strong> comprova que o estudo da Química Orgânica vai muito além de simples fórmulas moleculares e planas. A espacialidade das moléculas define o seu papel no universo biológico e industrial. Compreender a geometria molecular, a quiralidade e a atividade óptica é fundamental para o desenvolvimento da farmacologia moderna, bioquímica, ciência dos materiais e biotecnologia.
+            </p>
+        </div>
+    </section>
+
+    <!-- RODAPÉ E INTEGRANTES -->
+    <footer class="bg-slate-950 py-12 border-t border-brand-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center space-x-3">
+                <div class="p-2 bg-brand-600 rounded-lg text-white">
+                    <i data-lucide="atom" class="w-5 h-5"></i>
+                </div>
+                <span class="font-bold text-lg text-white">Isomeria Espacial - Trabalho Acadêmico</span>
+            </div>
+
+            <div class="space-y-2">
+                <p class="text-xs text-brand-400 uppercase tracking-widest font-semibold">Integrantes do Grupo</p>
+                <p class="text-sm text-slate-300 font-medium">
+                    Luís Otávio Silva dos Santos • Daniel Gandini • João Pedro • Luísa Hypólito • Beatriz Dionízio
+                </p>
+            </div>
+
+            <p class="text-xs text-slate-500">
+                &copy; 2026 Química Orgânica - Conteúdo Educacional e Interativo.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LOGICA JS DO QUIZ E MENSAGENS -->
+    <script>
+        lucide.createIcons();
+
+        // Menu Mobile Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // QUESTÕES DO QUIZ (10)
+        const quizData = [
+            {
+                question: "1. O que caracteriza fundamentalmente os estereoisômeros?",
+                options: [
+                    "Possuem fórmulas moleculares e conectividades atômicas diferentes.",
+                    "Possuem a mesma fórmula molecular e mesma conectividade, diferindo apenas na orientação espacial.",
+                    "Possuem apenas funções orgânicas distintas.",
+                    "Possuem massas molares completamente diferentes."
+                ],
+                correct: 1,
+                explanation: "Estereoisômeros mantêm idênticas a fórmula molecular e a sequência de ligações planas, diferindo exclusivamente na disposição tridimensional dos átomos."
+            },
+            {
+                question: "2. Qual das condições abaixo é indispensável para a ocorrência de Isomeria Geométrica em alcenos?",
+                options: [
+                    "Possuir ao menos um carbono quiral assimétrico.",
+                    "Haver restrição de rotação na dupla ligação e ligantes diferentes no mesmo carbono ($R_1 \\neq R_2$).",
+                    "A molécula ter plano de simetria perfeito.",
+                    "Ter obrigatoriamente um anel aromático ligado à estrutura."
+                ],
+                correct: 1,
+                explanation: "Exige-se a impossibilidade de rotação e que cada átomo de carbono da dupla esteja ligado a dois grupos distintos entre si."
+            },
+            {
+                question: "3. O que define um Carbono Quiral (ou assimétrico)?",
+                options: [
+                    "Um carbono com ligação tripla ligado a dois átomos iguais.",
+                    "Um carbono ligado a 4 grupos exatamente iguais.",
+                    "Um carbono com hibridização sp3 ligado a 4 grupos inteiramente distintos entre si.",
+                    "Um carbono do grupo carboxila."
+                ],
+                correct: 2,
+                explanation: "O carbono quiral tem geometria tetraédrica e quatro substituintes totalmente diferentes ($R_1 \\neq R_2 \\neq R_3 \\neq R_4$)."
+            },
+            {
+                question: "4. Como é chamada a mistura em partes iguais (equimolar) de enantiômeros dextrógiro e levógiro?",
+                options: [
+                    "Mistura Diastereoisomérica",
+                    "Mistura Meso",
+                    "Mistura Racêmica",
+                    "Azeótropo Quiral"
+                ],
+                correct: 2,
+                explanation: "A mistura racêmica contém 50% do isômero dextrógiro e 50% do levógiro, resultando em inatividade óptica por compensação externa."
+            },
+            {
+                question: "5. Em relação às propriedades físicas dos isômeros Cis e Trans:",
+                options: [
+                    "O isômero Cis é geralmente mais simétrico e apolar.",
+                    "O isômero Cis costuma ser mais polar e apresentar maior ponto de ebulição que o Trans.",
+                    "O isômero Trans sempre possui maior ponto de ebulição que o Cis.",
+                    "Ambos possuem propriedades físicas exatamente idênticas."
+                ],
+                correct: 1,
+                explanation: "Devido ao vetor de momento dipolar resultando no mesmo plano, o isômero Cis apresenta maior polaridade e maior ponto de ebulição."
+            },
+            {
+                question: "6. Como a luz polarizada é desviada por um enantiômero levógiro?",
+                options: [
+                    "Para o sentido horário (direita, +).",
+                    "Não sofre qualquer desvio.",
+                    "Para o sentido anti-horário (esquerda, -).",
+                    "Sofre refração em 90 graus para cima."
+                ],
+                correct: 2,
+                explanation: "O enantiômero levógiro desvia o plano de vibração da luz polarizada para o sentido anti-horário (esquerda, sinal -)."
+            },
+            {
+                question: "7. Por que enantiômeros podem apresentar efeitos biológicos/farmacológicos completamente opostos?",
+                options: [
+                    "Porque possuem massas moleculares diferentes no sangue.",
+                    "Porque os receptores biológicos são quirais e reconhecem apenas a geometria específica (modelo chave-fechadura).",
+                    "Porque um deles é insolúvel em água e o outro vira gás.",
+                    "Porque o isômero levógiro destrói os glóbulos vermelhos."
+                ],
+                correct: 1,
+                explanation: "Como as enzimas e receptores do organismo são moléculas quirais, eles interagem de forma seletiva com apenas uma das formas tridimensionais do fármaco."
+            },
+            {
+                question: "8. No sistema E-Z de nomenclatura para isômeros geométricos, como é definida a prioridade dos ligantes?",
+                options: [
+                    "Pelo tamanho da cadeia carbônica.",
+                    "Pelo número atômico (Z) dos átomos diretamente ligados ao carbono da dupla.",
+                    "Pela quantidade de hidrogênios presentes.",
+                    "Pela ordem alfabética dos elementos."
+                ],
+                correct: 1,
+                explanation: "Pelas regras de Cahn-Ingold-Prelog, a prioridade é determinada pelo maior número atômico (Z) do elemento diretamente ligado."
+            },
+            {
+                question: "9. O composto meso é caracterizado por:",
+                options: [
+                    "Ser opticamente ativo mesmo sem carbonos quirais.",
+                    "Possuir carbonos quirais, mas ser inativo opticamente devido a um plano de simetria interno.",
+                    "Ser uma mistura de líquidos imiscíveis.",
+                    "Desviar a luz polarizada em 180 graus."
+                ],
+                correct: 1,
+                explanation: "Compostos meso possuem dois ou mais centros quirais equivalentes, mas a presença de um plano de simetria interno anula a atividade óptica da molécula."
+            },
+            {
+                question: "10. Qual a fórmula utilizada para calcular o número de estereoisômeros opticamente ativos ($IOA$) em moléculas com $n$ carbonos quirais distintos?",
+                options: [
+                    "$IOA = 2n$",
+                    "$IOA = 2^n$",
+                    "$IOA = n^2$",
+                    "$IOA = 3^n$"
+                ],
+                correct: 1,
+                explanation: "A lei de van 't Hoff estabelece que o número de isômeros opticamente ativos é igual a $2^n$, onde $n$ é o número de carbonos asimétricos distintos."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function startQuiz() {
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-game').classList.remove('hidden');
+            currentQuestion = 0;
+            score = 0;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const q = quizData[currentQuestion];
+            document.getElementById('question-number').innerText = `Questão ${currentQuestion + 1} de ${quizData.length}`;
+            document.getElementById('quiz-score').innerText = `Pontuação: ${score}`;
+            document.getElementById('question-text').innerText = q.question;
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            const explanationBox = document.getElementById('explanation-box');
+            explanationBox.classList.add('hidden');
+
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 hover:border-brand-500/60 hover:bg-slate-900 transition flex items-start gap-3 text-sm";
+                btn.onclick = () => selectOption(idx);
+                btn.innerHTML = `<span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-xs font-bold shrink-0">${String.fromCharCode(65 + idx)}</span> <span>${opt}</span>`;
+                container.appendChild(btn);
+            });
+        }
+
+        function selectOption(index) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizData[currentQuestion];
+            const options = document.getElementById('options-container').children;
+
+            if (index === q.correct) {
+                score++;
+                options[index].classList.remove('bg-slate-950', 'border-slate-800');
+                options[index].classList.add('bg-emerald-950/80', 'border-emerald-500', 'text-emerald-200');
+            } else {
+                options[index].classList.remove('bg-slate-950', 'border-slate-800');
+                options[index].classList.add('bg-rose-950/80', 'border-rose-500', 'text-rose-200');
+                
+                options[q.correct].classList.remove('bg-slate-950', 'border-slate-800');
+                options[q.correct].classList.add('bg-emerald-950/80', 'border-emerald-500', 'text-emerald-200');
+            }
+
+            document.getElementById('quiz-score').innerText = `Pontuação: ${score}`;
+
+            const explanationBox = document.getElementById('explanation-box');
+            explanationBox.innerHTML = `<strong class="text-brand-300 block mb-1">Explicação:</strong> ${q.explanation}`;
+            explanationBox.classList.remove('hidden');
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-game').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+
+            document.getElementById('result-text').innerText = `Você acertou ${score} de ${quizData.length} perguntas (${(score/quizData.length)*100}%).`;
+
+            let feedback = "";
+            if (score === 10) feedback = "Excelente! Você domina completamente a Isomeria Espacial!";
+            else if (score >= 7) feedback = "Muito bem! Bom conhecimento sobre os conceitos de estereoisomeria.";
+            else if (score >= 5) feedback = "Bom esforço! Recomendamos dar mais uma lida nos conceitos de Isomeria Óptica e Quiralidade.";
+            else feedback = "Revise a matéria teórica no site e tente novamente para fixar os conceitos.";
+
+            document.getElementById('result-feedback').innerText = feedback;
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            startQuiz();
+        }
+    </script>
+</body>
+</html>
